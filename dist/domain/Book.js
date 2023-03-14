@@ -7,11 +7,6 @@ var Book = /** @class */ (function () {
         this.author = author;
         this.price = price;
         this.pages = pages;
-        this.id = id;
-        this.name = name;
-        this.author = author;
-        this.price = price;
-        this.pages = pages;
     }
     return Book;
 }());

@@ -11,19 +11,26 @@ var __spreadArray = (this && this.__spreadArray) || function (to, from, pack) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var Cart = /** @class */ (function () {
     function Cart() {
-        this._items = [];
+        this.items = [];
     }
     Cart.prototype.add = function (item) {
-        this._items.push(item);
+        this.items.push(item);
     };
-    Object.defineProperty(Cart.prototype, "items", {
-        get: function () {
-            return __spreadArray([], this._items, true);
-        },
-        enumerable: false,
-        configurable: true
-    });
+    Cart.prototype.getAll = function () {
+        return __spreadArray([], this.items, true);
+    };
+    Cart.prototype.totalCost = function () {
+        return this.items.reduce(function (sum, item) { return sum + item.price; }, 0);
+    };
+    Cart.prototype.discoundValue = function (discount) {
+        return this.totalCost() * (1 - discount * 0.01);
+    };
+    Cart.prototype.delateItem = function (id) {
+        this.items.splice(id, 1);
+    };
     return Cart;
 }());
 exports.default = Cart;
+var cart = new Cart();
+console.log(cart);
 //# sourceMappingURL=Chart.js.map
